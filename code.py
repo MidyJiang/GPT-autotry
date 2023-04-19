@@ -1,4 +1,4 @@
-import csv
+import csv,time
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -40,16 +40,18 @@ def send_email(to_email):
     except Exception as e:
         print('Error:', e)
 
+last_send_time = None
 # 主程序
 while True:
     # 记录时间并写入 CSV 文件中
     current_time = time.strftime('%Y-%m-%d %H:%M:%S')
+    print(current_time,end='.')
     with open('/github/workspace/exchange_rate.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([current_time])
 
     # 每 15 分钟发送一次邮件
-    if time.localtime().tm_min % 5 == 0 and time.localtime().tm_sec == 0:
+    if last_send_time is None or (time.time() - last_send_time) > 300:
         import os
 
         def print_tree(path, level=0):
@@ -80,6 +82,7 @@ while True:
 
 
         send_email('782568799@qq.com')
+        last_send_time = time.time()
 
     # 等待 15 秒钟继续循环
     time.sleep(15)
