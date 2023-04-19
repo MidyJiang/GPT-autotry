@@ -39,7 +39,7 @@ jobs:
           username: '782568799@qq.com'
           password: ${{ secrets.AUTHORIZE }}
           subject: CSV File
-          body: Attached please find the CSV file.
+          body: '这是邮件正文。'
           from: '782568799@qq.com'
           to: '782568799@qq.com'
           attachments: |
