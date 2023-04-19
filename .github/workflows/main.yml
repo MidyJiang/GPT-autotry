@@ -8,7 +8,7 @@ on:
 
 jobs:
   run_code:
-    runs-on: -latest
+    runs-on: windows-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2.4.2
