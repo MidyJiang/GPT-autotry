@@ -44,4 +44,4 @@ jobs:
           from: '782568799@qq.com'
           to: '782568799@qq.com'
           attachments: |
-            "/github/workspace/exchange_rate.csv"
+            "D:\a\GPT-autotry\GPT-autotry\exchange_rate.csv"
