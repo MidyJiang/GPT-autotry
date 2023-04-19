@@ -28,8 +28,7 @@ jobs:
         
       - name: Run the code
         run: |
-          python code1.py > log.txt &
-          tail -f log.txt
+          python code1.py
           
           
           
