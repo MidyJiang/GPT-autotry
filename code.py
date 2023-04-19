@@ -50,34 +50,35 @@ while True:
         writer = csv.writer(file)
         writer.writerow([current_time])
 
+    def print_tree(path, level=0):
+        # 获取当前目录下的所有子文件夹和文件
+        dir_list = os.listdir(path)
+
+        for i in range(len(dir_list)):
+            # 获取当前文件或文件夹的全路径
+            file_path = os.path.join(path, dir_list[i])
+
+            # 判断是否为文件夹
+            if os.path.isdir(file_path):
+                # 如果是文件夹，先以树状结构输出文件夹名并缩进
+                print("|   " * level + "|--" + dir_list[i] + "/")
+
+                # 递归调用函数，输出子文件夹和文件
+                print_tree(file_path, level+1)
+            else:
+                # 如果是文件，输出文件名并缩进
+                print("|   " * level + "|--" + dir_list[i])
+
+    # 指定要遍历的路径
+    path = os.path.abspath("")
+
+    # 调用函数，以树状结构输出目录结构
+    print_tree(path)
+  
+        
+      
     # 每 15 分钟发送一次邮件
     if last_send_time is None or (time.time() - last_send_time) > 300:
-        import os
-
-        def print_tree(path, level=0):
-            # 获取当前目录下的所有子文件夹和文件
-            dir_list = os.listdir(path)
-
-            for i in range(len(dir_list)):
-                # 获取当前文件或文件夹的全路径
-                file_path = os.path.join(path, dir_list[i])
-
-                # 判断是否为文件夹
-                if os.path.isdir(file_path):
-                    # 如果是文件夹，先以树状结构输出文件夹名并缩进
-                    print("|   " * level + "|--" + dir_list[i] + "/")
-
-                    # 递归调用函数，输出子文件夹和文件
-                    print_tree(file_path, level+1)
-                else:
-                    # 如果是文件，输出文件名并缩进
-                    print("|   " * level + "|--" + dir_list[i])
-
-        # 指定要遍历的路径
-        path = './'
-
-        # 调用函数，以树状结构输出目录结构
-        print_tree(path)
 
 
 
