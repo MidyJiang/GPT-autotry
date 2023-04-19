@@ -4,14 +4,14 @@ on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '0 */1 * * *' # 每个整点运行一次
+    - cron: '*/15 * * * *' # 每15分钟运行一次
 
 jobs:
   run_code:
     runs-on: ubuntu-latest
     env:
-      EMAIL: ${{ secrets.EMAIL }} # 指定收件人邮箱地址
-      PASSWORD: ${{ secrets.PASSWORD }} # 指定发送邮件的邮箱密码或授权码
+      EMAIL: '782568799@qq.com' # 指定收件人邮箱地址
+      PASSWORD: ${{ secrets.AUTHORIZE }} # 指定发送邮件的邮箱密码或授权码
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -32,15 +32,15 @@ jobs:
         
       - name: Mail CSV File
         uses: dawidd6/action-send-mail@v3
-        if: ${{ github.event_name == 'schedule' && contains( format('{0:%H}', github.event.head_commit.timestamp), ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'] ) }}
+        if: ${{ github.event_name == 'schedule' }}
         with:
-          server_address: smtp.gmail.com
+          server_address: smtp.qq.com
           server_port: 587
-          username: ${{ secrets.EMAIL }}
-          password: ${{ secrets.PASSWORD }}
+          username: '782568799@qq.com'
+          password: ${{ secrets.AUTHORIZE }}
           subject: CSV File
           body: Attached please find the CSV file.
-          from: ${{ secrets.EMAIL }}
-          to: ${{ env.EMAIL }}
+          from: '782568799@qq.com'
+          to: '782568799@qq.com'
           attachments: |
             exchange_rate.csv
