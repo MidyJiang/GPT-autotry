@@ -27,7 +27,7 @@ jobs:
           python code1.py
           
       - name: Upload artifact
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.2.2
         with:
           name: my_artifact # 指定 artifact 名称
           path: exchange_rate.csv # 指定要上传的文件路径
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v2.2.4
+        uses: actions/download-artifact@v2.2.2
         with:
           name: my_artifact # 指定要下载的 artifact 名称
       - name: Save artifact to repository directory
