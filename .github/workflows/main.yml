@@ -42,4 +42,4 @@ jobs:
           from: '782568799@qq.com'
           to: '782568799@qq.com'
           attachments: |
-            exchange_rate.csv
+            "/github/workspace/exchange_rate.csv"
