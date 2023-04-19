@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v2.2.4
+        uses: actions/download-artifact@v2.1.1
         with:
           name: my_artifact # 指定要下载的 artifact 名称
       - name: Save artifact to repository directory
