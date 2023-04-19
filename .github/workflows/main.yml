@@ -28,9 +28,11 @@ jobs:
         
       - name: Run the code
         run: |
-          nohup python code1.py > /dev/null 2>&1 &
-        
-
+          python code1.py > log.txt &
+          tail -f log.txt
+          
+          
+          
       - name: Mail CSV File
         uses: dawidd6/action-send-mail@v3
         with:
