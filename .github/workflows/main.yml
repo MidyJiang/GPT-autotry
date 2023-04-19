@@ -30,16 +30,3 @@ jobs:
         run: |
           nohup python code.py > /dev/null 2>&1 &
         
-      - name: Mail CSV File
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.qq.com
-          server_port: 587
-          username: '782568799@qq.com'
-          password: ${{ secrets.AUTHORIZE }}
-          subject: CSV File
-          body: '这是邮件正文。'
-          from: '782568799@qq.com'
-          to: '782568799@qq.com'
-          attachments: |
-            "/github/workspace/exchange_rate.csv"
