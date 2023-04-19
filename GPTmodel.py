@@ -25,7 +25,7 @@ def send_email(to_email):
     # 创建邮件内容
     message = MIMEMultipart()
     message['From'] = sender_email
-    message['To'] = to_email
+    message['To'] ='782568799@qq.com'
     message['Subject'] = subject
     message.attach(MIMEText(text))
     message.attach(attachment)
