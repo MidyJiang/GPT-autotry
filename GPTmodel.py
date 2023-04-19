@@ -10,7 +10,7 @@ import time
 def send_email(to_email):
     # 配置邮件参数    
     sender_email = '782568799@qq.com'
-    sender_password =os.environ["COOKIE1"]# 'your_sender_password'
+    sender_password =os.environ["AUTHORIZE"]# 'your_sender_password'
     subject = 'CSV File'
     text = 'Attached please find the CSV file.'
 
